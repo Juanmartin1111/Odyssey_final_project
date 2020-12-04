@@ -2,6 +2,7 @@ package lewis.edu.game.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+
 import lewis.edu.game.OdysseyGame;
 
 public class DesktopLauncher {
