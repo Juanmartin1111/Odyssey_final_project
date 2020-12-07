@@ -5,16 +5,15 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
-public class Bricks extends GameObject {
-
+public class Obstacle extends GameObject {
     Rectangle hitBox;
     Sprite sprite;
     Texture texture;
 
-    public Bricks(int x, int y) {
-        hitBox = new Rectangle(x, y, 64, 64);
-        texture = new Texture("images/sand.png");
-        sprite = new Sprite(texture, 0, 0, 64, 64);
+    public Obstacle(int x, int y) {
+        hitBox = new Rectangle(x, y, 64, 37);
+        texture = new Texture("images/spikes.png");
+        sprite = new Sprite(texture, 0, 27, 64, 37);
         setPosition(x, y);
     }
 
@@ -32,13 +31,14 @@ public class Bricks extends GameObject {
 
     @Override
     public Rectangle getHitBox() {
+        
         return hitBox;
     }
 
     @Override
     public int hits(Rectangle r) {
-        // TODO Auto-generated method stub
-        return 0;
+        
+        return -1;
     }
 
     @Override
@@ -73,10 +73,10 @@ public class Bricks extends GameObject {
 
     }
 
-    @Override
-    public int hitAction(int side) {
-        // TODO Auto-generated method stub
-        return 1;
-    }
+	@Override
+	public int hitAction(int side) {
+		if (side == 1) return 2;
+		return 1;
+	}
     
 }

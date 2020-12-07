@@ -1,20 +1,21 @@
 package lewis.edu.game;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
-public class Bricks extends GameObject {
+public class Suns extends GameObject {
 
     Rectangle hitBox;
     Sprite sprite;
     Texture texture;
 
-    public Bricks(int x, int y) {
-        hitBox = new Rectangle(x, y, 64, 64);
-        texture = new Texture("images/sand.png");
-        sprite = new Sprite(texture, 0, 0, 64, 64);
+    public Suns(int x, int y) {
+        hitBox = new Rectangle(0, 0, 50, 50);
+        texture = new Texture(Gdx.files.internal("images/sun.png"));
+        sprite = new Sprite(texture, 0,0, 50, 50);
         setPosition(x, y);
     }
 
@@ -32,7 +33,13 @@ public class Bricks extends GameObject {
 
     @Override
     public Rectangle getHitBox() {
+        // TODO Auto-generated method stub
         return hitBox;
+    }
+
+    @Override
+    public int hitAction(int side) {
+        return 3;
     }
 
     @Override
@@ -68,15 +75,9 @@ public class Bricks extends GameObject {
     }
 
     @Override
-    public void update(float delta) {
-        // TODO Auto-generated method stub
-
+	public void update(float delta) {
+		// TODO Auto-generated method stub
+		
     }
-
-    @Override
-    public int hitAction(int side) {
-        // TODO Auto-generated method stub
-        return 1;
-    }
-    
 }
+

@@ -15,16 +15,15 @@ public class Warriors extends GameObject {
 
     // entry point
     public Warriors() {
-        full = new Rectangle(0.0f,0.0f, 128.0f, 128.0f);
+        full = new Rectangle(0.0f, 0.0f, 128.0f, 128.0f);
         bottom = new Rectangle(0, 0, 128, 16);
         left = new Rectangle(0, 16, 64, 96);
         right = new Rectangle(64, 16, 64, 96);
         top = new Rectangle(0, 112, 128, 16);
 
-
-        texture = new Texture("images/escanor.png");
-        sprite = new Sprite(texture, 0,0,128,128);
-        this.setPosition(0, 0);
+        texture = new Texture("images/escanor14.png");
+        sprite = new Sprite(texture, 0, 0, 128, 128);
+        setPosition(50, 300);
         velocityY = 0;
     }
 
@@ -35,48 +34,64 @@ public class Warriors extends GameObject {
         if (right.overlaps(r)) {
             return 3;
         }
-        if (top.overlaps(r)) {
-            return 4;
-        }
         if (bottom.overlaps(r)) {
             return 1;
+        }
+        if (top.overlaps(r)) {
+            return 4;
         }
         return -1;
     }
 
     public void action(int type, float x, float y) {
-        if (type == 1) {
+        if (type == 1 || type == 4) {
             velocityY = 0;
             setPosition(bottom.x, y);
+        }
+        if (type == 2 || type == 3) {
+            velocityY = 0;
+            setPosition(x, bottom.y);
         }
     }
 
     public void update(float delta) {
         velocityY -= 500 * delta;
-        bottom.y += velocityY;
-        sprite.setPosition(bottom.x, bottom.y + (velocityY*delta));
+        setPosition(bottom.x, bottom.y + (velocityY * delta));
     }
 
     public void setPosition(float x, float y) {
+        full.x = x;
+        full.y = y;
+
         bottom.x = x;
         bottom.y = y;
+
+        left.x = x;
+        left.y = y + 16;
+
+        right.x = x + 64;
+        right.y = y + 16;
+
+        top.x = x;
+        top.y = y + 112;
+
         sprite.setPosition(x, y);
     }
 
     public void moveLeft(float delta) {
-        int speed = 100;
+        int speed = 170;
         setPosition(bottom.x - (speed * delta), bottom.y);
-        if (direction == 1) {
-            direction = 0;
+        if (direction == 0) {
+            direction = 1;
             sprite.flip(true, false);
         }
     }
 
     public void moveRight(float delta) {
-        int speed = 100;
-        setPosition(bottom.x - (speed * delta), bottom.y);
-        if (direction == 0) {
-            direction = 1;
+        int speed = 170;
+        setPosition(bottom.x + (speed * delta), bottom.y);
+        if (direction == 1) {
+            direction = 0;
             sprite.flip(true, false);
         }
     }
@@ -93,8 +108,14 @@ public class Warriors extends GameObject {
 
     @Override
     public Rectangle getHitBox() {
-        
+
         return full;
+    }
+
+    @Override
+    public int hitAction(int side) {
+        // TODO Auto-generated method stub
+        return 0;
     }
 
 }
