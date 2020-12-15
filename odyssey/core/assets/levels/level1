@@ -13,28 +13,32 @@ Obstacle -768 0
 Obstacle -832 0
 Obstacle -896 0
 Obstacle -960 0
+lava 0 40
 sand -128 64
 sand -320 128
 sand -448 256
 sand -576 640
 sand 0 0
 sand 64 0
+lava 64 40
 sand 128 0
-lava 128 64
+lava 128 40
 sand 192 0
 sand 256 0
-lava 256 64
+lava 256 40
 sand 320 0
 Obstacle 300 64
 Sun 300 150
 sand 384 0
-lava 384 64
+lava 384 40
 sand 448 0
 sand 512 0
+lava 512 40
 sand 576 0
 sand 640 0
+lava 640 40
 sand 704 0
-castle 704 64
+
 sand 768 0
 sand 832 0
 sand 896 0
@@ -47,6 +51,9 @@ Obstacle 1280 -128
 Obstacle 1344 -128
 sand 1408 0
 sand 1472 0
+sand 1600 0
+sand 1728 0
+castle 1728 40
 Obstacle 1536 0
 Obstacle 1600 0
 Obstacle 1664 0
@@ -57,3 +64,11 @@ Obstacle 1920 0
 Obstacle 1984 0
 Obstacle 2048 0
 Obstacle 2112 0
+volcano 300 32 6
+volcano 500 32 4
+volcano 800 32 8
+volcano 1000 32 6
+volcano 1250 32 5
+volcano 1500 32 7
+volcano 1750 32 4
+volcano 2000 32 5

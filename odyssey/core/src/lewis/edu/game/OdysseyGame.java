@@ -1,19 +1,17 @@
 package lewis.edu.game;
 
-import java.lang.System.Logger.Level;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
+
 import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.Input.Keys;
 
 public class OdysseyGame extends ApplicationAdapter {
 	private OrthographicCamera cam;
@@ -22,6 +20,8 @@ public class OdysseyGame extends ApplicationAdapter {
 	private ArrayList<GameObject> list = new ArrayList<GameObject>();
 	private ArrayList<GameObject> pDelete = new ArrayList<GameObject>();
 	private ArrayList<GameObject> firstBackground = new ArrayList<GameObject>();
+	private ArrayList<GameObject> secBackground = new ArrayList<GameObject>();
+
 	private int level = 1;
 
 	@Override
@@ -66,12 +66,15 @@ public class OdysseyGame extends ApplicationAdapter {
 
 	@Override
 	public void render () {
-		Gdx.gl.glClearColor(1, 1, 1, 1);
+		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		handleInput();
 		batch.setProjectionMatrix(cam.combined);
 
 		batch.begin();
+		for (GameObject t : secBackground) {
+			t.draw(batch);
+		}
 		for (GameObject t : firstBackground) {
 			t.draw(batch);
 		}
@@ -110,7 +113,11 @@ public class OdysseyGame extends ApplicationAdapter {
 			case 2:
 				switch(t.hitAction(2)) {
 				case 1:
+					float distance = player1.getHitBox().getX() - (t.getHitBox().x + t.getHitBox().width+1);
 					player1.action(2, t.getHitBox().x + t.getHitBox().width+1, 0);
+					for (GameObject B : secBackground) {
+						B.action(0, distance, 0);
+					}
 					break;
 				case 2:
 					player1.setPosition(0, 500);
@@ -127,7 +134,11 @@ public class OdysseyGame extends ApplicationAdapter {
 			case 3:
 				switch(t.hitAction(3)) {
 				case 1:
+				float distance = player1.getHitBox().getX() - (t.getHitBox().x - player1.getHitBox().width-1);
 					player1.action(3, t.getHitBox().x - player1.getHitBox().width - 1,0);
+					for (GameObject B : secBackground) {
+						B.action(0, distance, 0);
+					}
 					break;
 				case 2:
 					player1.setPosition(0, 500);
@@ -177,9 +188,15 @@ public class OdysseyGame extends ApplicationAdapter {
 		// Controls
 		if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
 			player1.moveLeft(Gdx.graphics.getDeltaTime());
+			for (GameObject t : secBackground) {
+				t.moveLeft(Gdx.graphics.getDeltaTime());
+			}
 		}
 		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
 			player1.moveRight(Gdx.graphics.getDeltaTime());
+			for (GameObject t : secBackground) {
+				t.moveRight(Gdx.graphics.getDeltaTime());
+			}
 		}
 		if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
 			player1.jump();
@@ -199,6 +216,8 @@ public class OdysseyGame extends ApplicationAdapter {
 
 	public void nextLevel(String level) {
 		list.clear();
+		firstBackground.clear();
+		secBackground.clear();
 		FileHandle file = Gdx.files.internal(level);
 		StringTokenizer tokens = new StringTokenizer(file.readString());
 		while (tokens.hasMoreTokens()) {
@@ -222,6 +241,12 @@ public class OdysseyGame extends ApplicationAdapter {
 			} else if (type.equals("lava")) {
 				firstBackground.add(new Lava(
 					Integer.parseInt(tokens.nextToken()), 
+					Integer.parseInt(tokens.nextToken())));
+			}
+			else if (type.equals("volcano")) {
+				secBackground.add(new Volcano(
+					Integer.parseInt(tokens.nextToken()),
+					Integer.parseInt(tokens.nextToken()),
 					Integer.parseInt(tokens.nextToken())));
 			}
 		}

@@ -78,7 +78,7 @@ public class Warriors extends GameObject {
     }
 
     public void moveLeft(float delta) {
-        int speed = 170;
+        int speed = 200;
         setPosition(bottom.x - (speed * delta), bottom.y);
         if (direction == 0) {
             direction = 1;
@@ -87,7 +87,7 @@ public class Warriors extends GameObject {
     }
 
     public void moveRight(float delta) {
-        int speed = 170;
+        int speed = 200;
         setPosition(bottom.x + (speed * delta), bottom.y);
         if (direction == 1) {
             direction = 0;
