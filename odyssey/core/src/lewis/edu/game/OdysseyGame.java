@@ -4,6 +4,7 @@ import java.lang.System.Logger.Level;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.files.FileHandle;
@@ -20,6 +21,7 @@ public class OdysseyGame extends ApplicationAdapter {
 	private Warriors player1;
 	private ArrayList<GameObject> list = new ArrayList<GameObject>();
 	private ArrayList<GameObject> pDelete = new ArrayList<GameObject>();
+	private ArrayList<GameObject> firstBackground = new ArrayList<GameObject>();
 	private int level = 1;
 
 	@Override
@@ -70,6 +72,9 @@ public class OdysseyGame extends ApplicationAdapter {
 		batch.setProjectionMatrix(cam.combined);
 
 		batch.begin();
+		for (GameObject t : firstBackground) {
+			t.draw(batch);
+		}
 		player1.draw(batch);
 		for (GameObject t : list) {
 			t.draw(batch);
@@ -212,6 +217,10 @@ public class OdysseyGame extends ApplicationAdapter {
 					Integer.parseInt(tokens.nextToken())));
 			} else if (type.equals("castle")) {
 				list.add(new Castle(
+					Integer.parseInt(tokens.nextToken()), 
+					Integer.parseInt(tokens.nextToken())));
+			} else if (type.equals("lava")) {
+				firstBackground.add(new Lava(
 					Integer.parseInt(tokens.nextToken()), 
 					Integer.parseInt(tokens.nextToken())));
 			}

@@ -20,12 +20,15 @@ sand -576 640
 sand 0 0
 sand 64 0
 sand 128 0
+lava 128 64
 sand 192 0
 sand 256 0
+lava 256 64
 sand 320 0
 Obstacle 300 64
 Sun 300 150
 sand 384 0
+lava 384 64
 sand 448 0
 sand 512 0
 sand 576 0

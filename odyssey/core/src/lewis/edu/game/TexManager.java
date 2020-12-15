@@ -9,6 +9,7 @@ public class TexManager {
     public static Texture warrior;
     public static Texture castle;
     public static Texture obstacle;
+    public static Texture lava;
     
 
     public static void create() {
@@ -17,6 +18,7 @@ public class TexManager {
         warrior = new Texture("images/escanor14.png");
         castle =  new Texture(Gdx.files.internal("images/castle.png"));
         obstacle = new Texture("images/spikes.png");
+        lava = new Texture ("images/lava1.png");
     }
     public static void dispose() {
         brick.dispose();
@@ -24,5 +26,6 @@ public class TexManager {
         warrior.dispose();
         castle.dispose();
         obstacle.dispose();
+        lava.dispose();
     }
 }
