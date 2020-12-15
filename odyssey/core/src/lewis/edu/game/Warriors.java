@@ -21,8 +21,7 @@ public class Warriors extends GameObject {
         right = new Rectangle(64, 16, 64, 96);
         top = new Rectangle(0, 112, 128, 16);
 
-        texture = new Texture("images/escanor14.png");
-        sprite = new Sprite(texture, 0, 0, 128, 128);
+        sprite = new Sprite(TexManager.warrior, 0, 0, 128, 128);
         setPosition(50, 300);
         velocityY = 0;
     }

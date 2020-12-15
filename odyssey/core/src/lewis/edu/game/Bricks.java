@@ -13,8 +13,7 @@ public class Bricks extends GameObject {
 
     public Bricks(int x, int y) {
         hitBox = new Rectangle(x, y, 64, 64);
-        texture = new Texture("images/sand.png");
-        sprite = new Sprite(texture, 0, 0, 64, 64);
+        sprite = new Sprite(TexManager.brick, 0, 0, 64, 64);
         setPosition(x, y);
     }
 

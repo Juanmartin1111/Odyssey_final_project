@@ -24,6 +24,8 @@ public class OdysseyGame extends ApplicationAdapter {
 
 	@Override
 	public void create () {
+
+		TexManager.create();
 		cam = new OrthographicCamera();
 		cam.setToOrtho(false, 800, 480);
 		batch = new SpriteBatch();
@@ -163,6 +165,8 @@ public class OdysseyGame extends ApplicationAdapter {
 			player1.setPosition(0, 500);
 			nextLevel("level" + level);
 		}
+
+		//System.out.println(player1.getHitBox().x + ", " + player1.getHitBox().y);
 		updateCamera();
 
 		// Controls
@@ -180,6 +184,7 @@ public class OdysseyGame extends ApplicationAdapter {
 	@Override
 	public void dispose () {
 		batch.dispose();
+		TexManager.dispose();
 	}
 
 	public void updateCamera() {

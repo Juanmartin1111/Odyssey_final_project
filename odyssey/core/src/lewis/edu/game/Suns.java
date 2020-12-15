@@ -1,6 +1,6 @@
 package lewis.edu.game;
 
-import com.badlogic.gdx.Gdx;
+
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -14,8 +14,7 @@ public class Suns extends GameObject {
 
     public Suns(int x, int y) {
         hitBox = new Rectangle(0, 0, 50, 50);
-        texture = new Texture(Gdx.files.internal("images/sun.png"));
-        sprite = new Sprite(texture, 0,0, 50, 50);
+        sprite = new Sprite(TexManager.sun, 0,0, 50, 50);
         setPosition(x, y);
     }
 

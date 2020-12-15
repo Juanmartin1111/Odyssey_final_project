@@ -1,6 +1,6 @@
 package lewis.edu.game;
 
-import com.badlogic.gdx.Gdx;
+
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -16,8 +16,7 @@ public class Castle extends GameObject {
 
     public Castle(int x, int y) {
         hitBox = new Rectangle(0, 0, 256, 256);
-       texture = new Texture(Gdx.files.internal("images/castle.png"));
-        sprite = new Sprite(texture, 0,0, 256, 256);
+        sprite = new Sprite(TexManager.castle, 0,0, 256, 256);
         setPosition(x, y);
 
     }

@@ -1,6 +1,6 @@
 package lewis.edu.game;
 
-import com.badlogic.gdx.graphics.Texture;
+
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
@@ -8,12 +8,11 @@ import com.badlogic.gdx.math.Rectangle;
 public class Obstacle extends GameObject {
     Rectangle hitBox;
     Sprite sprite;
-    Texture texture;
+
 
     public Obstacle(int x, int y) {
         hitBox = new Rectangle(x, y, 64, 37);
-        texture = new Texture("images/spikes.png");
-        sprite = new Sprite(texture, 0, 27, 64, 37);
+        sprite = new Sprite(TexManager.obstacle, 0, 27, 64, 37);
         setPosition(x, y);
     }
 
