@@ -37,8 +37,13 @@ lava 512 40
 sand 576 0
 sand 640 0
 lava 640 40
+lava 704 40
+lava 768 40
+lava 832 40
+lava 896 40
+lava 960 40
+lava 1024 40
 sand 704 0
-
 sand 768 0
 sand 832 0
 sand 896 0
@@ -49,6 +54,10 @@ Obstacle 1152 -128
 Obstacle 1216 -128
 Obstacle 1280 -128
 Obstacle 1344 -128
+lava 1408 40
+
+
+
 sand 1408 0
 sand 1472 0
 sand 1600 0
