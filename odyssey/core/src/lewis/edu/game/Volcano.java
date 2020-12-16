@@ -51,14 +51,14 @@ public class Volcano extends GameObject {
 
     @Override
     public void moveLeft(float delta) {
-        int speed = 140;
+        int speed = 80;
         setPosition(sprite.getX() - (speed * delta), sprite.getY());
 
     }
 
     @Override
     public void moveRight(float delta) {
-        int speed = 140;
+        int speed = 80;
         setPosition(sprite.getX() + (speed * delta), sprite.getY());
 
     }

@@ -10,6 +10,7 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
@@ -23,6 +24,9 @@ public class OdysseyGame extends ApplicationAdapter {
 	private ArrayList<GameObject> secBackground = new ArrayList<GameObject>();
 
 	private int level = 1;
+	private BitmapFont font;
+	private float fontPos = 0;
+	private int deaths = 0;
 
 	@Override
 	public void create () {
@@ -47,7 +51,10 @@ public class OdysseyGame extends ApplicationAdapter {
 		list.add(new Obstacle(648, 200));*/
 
 
-
+		font = new BitmapFont(Gdx.files.internal("fonts/scaryfont.fnt"),
+			Gdx.files.internal("fonts/scaryfont.png"), false);
+		
+		deaths = -1;
 
 		
 	}
@@ -82,6 +89,7 @@ public class OdysseyGame extends ApplicationAdapter {
 		for (GameObject t : list) {
 			t.draw(batch);
 		}
+		font.draw(batch, "Deaths Count:" + deaths, fontPos, 450);
 		batch.end();
 
 		// Updates
@@ -100,6 +108,7 @@ public class OdysseyGame extends ApplicationAdapter {
 					break;
 				case 2:
 					player1.setPosition(0, 500);
+					deaths++;
 					break;
 				case 3:
 					pDelete.add(t);
@@ -121,6 +130,7 @@ public class OdysseyGame extends ApplicationAdapter {
 					break;
 				case 2:
 					player1.setPosition(0, 500);
+					deaths++;
 					break;
 				case 3:
 					pDelete.add(t);
@@ -142,6 +152,7 @@ public class OdysseyGame extends ApplicationAdapter {
 					break;
 				case 2:
 					player1.setPosition(0, 500);
+					deaths++;
 					break;
 				case 3:
 					pDelete.add(t);
@@ -158,6 +169,7 @@ public class OdysseyGame extends ApplicationAdapter {
 				player1.action(4, 0, t.getHitBox().y - player1.getHitBox().height);
 				case 2:
 					player1.setPosition(0, 500);
+					deaths++;
 					break;
 				case 3:
 					pDelete.add(t);
@@ -183,6 +195,7 @@ public class OdysseyGame extends ApplicationAdapter {
 		}
 
 		//System.out.println(player1.getHitBox().x + ", " + player1.getHitBox().y);
+		fontPos = player1.getHitBox().x - 300;
 		updateCamera();
 
 		// Controls
