@@ -32,6 +32,11 @@ public class OdysseyGame extends ApplicationAdapter {
 	public void create () {
 
 		TexManager.create();
+		SoundMan.create();
+		SoundMan.background.setLooping(true);
+		SoundMan.background.setVolume(0.1f);
+		SoundMan.background.play();
+
 		cam = new OrthographicCamera();
 		cam.setToOrtho(false, 800, 480);
 		batch = new SpriteBatch();
@@ -41,14 +46,6 @@ public class OdysseyGame extends ApplicationAdapter {
 		
 		level = 1;
 		nextLevel("levels/level1");
-		/*list.add(new Bricks(0,0));
-		list.add(new Bricks(64,0));
-		list.add(new Bricks(128,0));
-		list.add(new Bricks(456, 0));
-		list.add(new Bricks(520,200));
-		list.add(new Bricks(584, 200));
-		list.add(new Bricks(148, 200));
-		list.add(new Obstacle(648, 200));*/
 
 
 		font = new BitmapFont(Gdx.files.internal("fonts/scaryfont.fnt"),
@@ -220,6 +217,7 @@ public class OdysseyGame extends ApplicationAdapter {
 	public void dispose () {
 		batch.dispose();
 		TexManager.dispose();
+		SoundMan.dispose();
 	}
 
 	public void updateCamera() {

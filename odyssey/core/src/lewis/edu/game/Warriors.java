@@ -102,6 +102,7 @@ public class Warriors extends GameObject {
     public void jump() {
         if (velocityY == 0) {
             velocityY = 400;
+            SoundMan.jump.play(0.5f);
         }
     }
 
